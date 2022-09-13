@@ -1,14 +1,3 @@
-##社区综改系统-子系统4
-
-##家庭医生绩效考核及签约服务费管理系统
-
-##项目使用kotlin v1.6、  jdk v1.8、 springboot v2.6.1、 maven、mysql开发
-
-##拉取项目后需要自行反向安装 auth jar包 具体操作方式请看auth项目自述文件
-```
- http://192.168.1.220:8888/ggqz/auth/-/blob/master/README.md
-```
-
 ## Git 贡献提交规范
 - `feat` 增加新功能
 - `fix` 修复问题/BUG
