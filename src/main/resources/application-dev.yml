@@ -11,10 +11,10 @@ spring:
     static-locations: classpath:/static/
   datasource:
     #    mysql配置   mysql6以前com.ysql.jdbc.Driver驱动 6以后com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1/idle?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
+    url: jdbc:mysql://127.0.0.1/idle?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true
     username: idle
-    password: '12345678'
-    driver-class-name: com.mysql.jdbc.Driver
+    password: '135655488'
+    driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       initial-size: 10
@@ -28,6 +28,22 @@ spring:
       max-pool-prepared-statement-per-connection-size: 50
       filters: stat
       use-global-data-source-stat: true
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: '12312312'
+    jedis:
+      pool:
+        #?????????????
+        max-active: 8
+        #????????????????
+        max-wait: 5
+        #??????
+        max-idle: 8
+        #??????
+        min-idle: 0
+        #??????
+        timeout: 30000
 mybatis:
   mapper-locations: classpath:/mappers/*.xml
   configuration:
@@ -43,7 +59,7 @@ logging:
 props:
   project:
     #项目顶级文件目录
-    #    rootFilePath: '/home/back/data/idle/'
+    #    rootFilePath: '/usr/local/data/idle/'
     rootFilePath: 'D://fileTest/idle/'
     #下载目录
     download:

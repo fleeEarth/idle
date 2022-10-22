@@ -34,10 +34,10 @@ class EncryptAop : ResponseBodyAdvice<Any>, RequestBodyAdvice {
         req: ServerHttpRequest,
         res: ServerHttpResponse
     ): Any? {
-        return if (CommonConstant.openEncrypt && !returnType.method!!.isAnnotationPresent(PassEncrypt::class.java)) {
+        return if (CommonConstant.OPEN_ENCRYPT && !returnType.method!!.isAnnotationPresent(PassEncrypt::class.java)) {
             var result = body as Result
             var data = result.data
-            val token = request.getHeader(CommonConstant.tokenName)
+            val token = request.getHeader(CommonConstant.TOKEN_NAME)
 //            if (SessionUtil.isTimeout(token)) {
 //                return body
 //            }
@@ -82,8 +82,8 @@ class EncryptAop : ResponseBodyAdvice<Any>, RequestBodyAdvice {
         targetType: Type,
         converterType: Class<out HttpMessageConverter<*>>
     ): HttpInputMessage {
-        if (CommonConstant.openEncrypt && !parameter.method!!.isAnnotationPresent(PassEncrypt::class.java)) {
-            val token = request.getHeader(CommonConstant.tokenName)
+        if (CommonConstant.OPEN_ENCRYPT && !parameter.method!!.isAnnotationPresent(PassEncrypt::class.java)) {
+            val token = request.getHeader(CommonConstant.TOKEN_NAME)
 //            val userInfo = RedisUtil.getHashValueForUserInfo(token)
 //            val enStr = IOUtils.toString(inputMessage.body, "UTF-8")
 //            val deStr = SM464Util.decryptData_ECB(enStr, userInfo.sm4Key)
