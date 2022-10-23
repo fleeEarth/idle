@@ -1,5 +1,6 @@
 package tech.idle.utils
 
+import com.alibaba.fastjson.JSONObject
 import tech.idle.constant.CommonConstant
 import tech.idle.entity.UserInfo
 import java.util.*
@@ -14,7 +15,7 @@ object SessionUtil {
             return false
         }
         val userInfo = getUserInfo(token)
-        if(userInfo == null || !userInfo.hasLogin){
+        if (userInfo == null || !userInfo.hasLogin) {
             return false
         }
         //刷新超时时间
@@ -29,6 +30,7 @@ object SessionUtil {
         return try {
             RedisUtil.getHashValue(RedisUtil.REDIS_USER_INFO_LIST, token) as UserInfo
         } catch (e: Exception) {
+            e.printStackTrace()
             null
         }
     }

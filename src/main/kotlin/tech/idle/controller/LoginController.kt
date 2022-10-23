@@ -49,5 +49,15 @@ class LoginController {
         return Result.success(info)
     }
 
+    /**
+     * 用户注册
+     */
+    @PassLogin
+    @RequestMapping(value = ["/register"], method = [RequestMethod.POST])
+    fun register(@RequestBody jsonData: JSONObject): Result {
+        return loginService.register(jsonData)
+    }
+
+
 
 }

@@ -10,13 +10,25 @@
 
     <select id="login" parameterMap="params" resultMap="result">
         select
-            id,username,nickname,phone,register_time
+            uid,username,nickname,phone,register_time
         from
             tb_idle_user
         where
-            username = #{username} and password = #{password}
+            username = #{username} and password = #{password} and status = 1
 
     </select>
+
+    <select id="hasUsername" parameterType="string" resultType="int">
+        select count(0) from tb_idle_user where username = #{username}
+    </select>
+
+    <insert id="register" parameterMap="params">
+        insert into
+            tb_idle_user
+            (uid,username,nickname,password,phone,register_time,status)
+        values
+            (#{uid},#{username},#{nickname},#{password},#{phone},current_timestamp(),1)
+    </insert>
 
 
 </mapper>

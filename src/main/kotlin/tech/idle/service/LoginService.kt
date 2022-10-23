@@ -5,4 +5,5 @@ import tech.idle.result.Result
 
 interface LoginService {
     fun login(jsonData: JSONObject): Result
+    fun register(jsonData: JSONObject): Result
 }
